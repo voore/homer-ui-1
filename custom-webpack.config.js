@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-require('dotenv').config()
+const InjectPlugin = require('webpack-inject-plugin').default;
+const { forceUiSettings } = require('./polyfills');
 
 module.exports = {
   plugins: [
@@ -8,6 +9,7 @@ module.exports = {
         ENVIRONMENT: JSON.stringify(process.env.ENVIRONMENT),
         apiUrl: JSON.stringify(process.env.apiUrl)
       }
-    })
+    }),
+    new InjectPlugin(forceUiSettings);
   ]
 };
