@@ -10,6 +10,6 @@ module.exports = {
         apiUrl: JSON.stringify(process.env.apiUrl)
       }
     }),
-    new InjectPlugin(forceUiSettings);
+    new InjectPlugin(forceUiSettings)
   ]
 };
