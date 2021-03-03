@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 80",
-    "dev": "ng serve --configuration=development --port=80",
+    "dev": "ng serve --configuration=development --port=8000",
     "webapp": "ng serve --configuration=webapp --port=8099",
     "build": "ng build --prod && gzip -9 ./dist/homer-ui/*.js",
     "build-noenv": "ng build --configuration=production-noenv",
@@ -93,6 +93,7 @@
     "@types/jasminewd2": "2.0.8",
     "@types/node": "14.11.2",
     "codelyzer": "6.0.0",
+    "dotenv": "^8.2.0",
     "extend": "3.0.2",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~6.0.0",
