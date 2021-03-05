@@ -100,7 +100,8 @@ const __configureChartSettings = function () {
         const mergeSettings = {
             ...DEFAULT_SETTINGS,
             ...currSettings,
-            sizeToFit: false
+            sizeToFit: false,
+            sizeColumnsToFit: true
         }
         window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(mergeSettings));
     } else{
