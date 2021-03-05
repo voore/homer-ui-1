@@ -30,7 +30,7 @@ export class DialogSettingsGridDialog {
         {
             type: 'sizeColumnsToFit',
             title: 'Size Columns To Fit',
-            selected: false,
+            selected: true,
         }
     ];
     agGridSizeControl: any = {};
