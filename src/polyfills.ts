@@ -78,3 +78,44 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+
+ /***************************************************************************************************
+ * MONGOTEL POLYFILLS
+ */
+
+let __chartSettingTimer: NodeJS.Timeout;
+
+const __configureChartSettings = function () {
+    const SETTINGS_KEY = 'resultsChartSetting';
+    const DEFAULT_SETTINGS = {
+        sizeToFit: false,
+        sizeColumnsToFit: true,
+        autoSizeAllColumns: false
+    }
+    // ? - Check if resultsChartSetting exists in local
+    if(window.localStorage.getItem(SETTINGS_KEY) !== null){
+        // ? - merge existing settings with defaults
+        const currSettings = JSON.parse(window.localStorage.getItem(SETTINGS_KEY));
+        const mergeSettings = {
+            ...DEFAULT_SETTINGS,
+            ...currSettings,
+            sizeToFit: false,
+            sizeColumnsToFit: true
+        }
+        window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(mergeSettings));
+    } else{
+        // ? - Force default settings
+        window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(DEFAULT_SETTINGS));
+    }
+};
+
+window.addEventListener('load', function (){
+    console.log("Running Mongotel Homer Polfill");
+    // ? Run the configure function, every second
+    __chartSettingTimer = setTimeout(__configureChartSettings, 1000);
+});
+
+window.addEventListener('beforeunload', function (){
+    clearTimeout(__chartSettingTimer);
+});
